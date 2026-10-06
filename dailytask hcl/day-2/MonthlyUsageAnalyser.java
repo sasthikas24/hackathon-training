@@ -1,5 +1,19 @@
 public class MonthlyUsageAnalyser {
 
+    public static double calculateCost(long usage) {
+
+        if (usage <= Constants.LOW_USAGE_LIMIT) {
+            return usage * Constants.LOW_RATE;
+        } else if (usage <= Constants.MEDIUM_USAGE_LIMIT) {
+            return (Constants.LOW_USAGE_LIMIT * Constants.LOW_RATE)
+                    + ((usage - Constants.LOW_USAGE_LIMIT) * Constants.MEDIUM_RATE);
+        } else {
+            return (Constants.LOW_USAGE_LIMIT * Constants.LOW_RATE)
+                    + ((Constants.MEDIUM_USAGE_LIMIT - Constants.LOW_USAGE_LIMIT) * Constants.MEDIUM_RATE)
+                    + ((usage - Constants.MEDIUM_USAGE_LIMIT) * Constants.HIGH_RATE);
+        }
+    }
+
     public static void main(String[] args) {
 
         int[] monthlyUsage = {
@@ -25,7 +39,7 @@ public class MonthlyUsageAnalyser {
         }
 
         double average = (double) total / Constants.MONTHS;
-
+        double totalCost = calculateCost(total);
         char grade = average >= Constants.MEDIUM_USAGE_LIMIT
                 ? 'A'
                 : average >= Constants.LOW_USAGE_LIMIT
@@ -39,6 +53,7 @@ public class MonthlyUsageAnalyser {
         System.out.println("Maximum : " + maximum);
         System.out.println("Minimum : " + minimum);
         System.out.println("Grade   : " + grade);
+        System.out.println("Cost    : " + totalCost);
 
         int[][] houseUsage = {
             {1200, 1500, 1800},

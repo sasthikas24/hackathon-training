@@ -31,3 +31,13 @@ Monthly Usage Analyser
 - `Constants.java` - Business rules and constants
 - `MonthlyUsageAnalyser.java` - Main application
 - `sample-data.txt` - Sample weekly data
+
+## Git Workflow
+
+Day 2 was developed using multiple meaningful Git commits:
+
+1. Add Day 2 language fundamentals project
+2. Implement monthly usage analysis
+3. Complete Day 2 documentation and cleanup
+
+Compiled `.class` files are excluded from Git using `.gitignore`.
